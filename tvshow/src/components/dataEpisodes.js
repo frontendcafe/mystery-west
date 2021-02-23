@@ -1,42 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useFetch } from "./useFetch";
 import "./style/dataEpisode.css";
 
-const URL = "http://api.tvmaze.com/shows/530";
+const DataEpisode = () => {
+  const { id } = useParams();
 
-const DataEpisodes = () => {
-  const [episode, setEpisode] = useState(null);
-  const [hasError, setHasError] = useState(false);
+  const URL = `http://api.tvmaze.com/episodes/${id}`;
 
-  const getData = () => fetch(`${URL}/episodes`).then((res) => res.json());
-
-  useEffect(() => {
-    getData()
-      .then((episode) => setEpisode(episode))
-      .catch((err) => setHasError(true));
-  }, []);
+  const { data, hasError } = useFetch(URL);
 
   return (
     <React.Fragment>
       {hasError ? (
         <div>An error has occured.</div>
       ) : (
-        episode?.map((item) => (
-          <section className="episode" key={item.id}>
-            <h3>{item.name}</h3>
-            <h5>
-              Season {item.season} - Episode {item.number}
-            </h5>
-            <img src={item.image.medium} alt="lorem"></img>
-            <div>
-              <p>{item.summary}</p>
-              <p>Duration: {item.runtime}</p>
-              <p>Date: {item.airdate}</p>
-            </div>
-          </section>
-        ))
+        <section className="episode">
+          <h3>{data?.name}</h3>
+          <h5>
+            Season {data?.season} - Episode {data?.number}
+          </h5>
+          <img src={data?.image.medium} alt="Episode portrait"></img>
+          <div>
+            <p dangerouslySetInnerHTML={{ __html: data?.summary }}></p>
+            <p>Duration: {data?.runtime} mins</p>
+            <p>Release Date: {data?.airdate}</p>
+          </div>
+        </section>
       )}
     </React.Fragment>
   );
 };
 
-export default DataEpisodes;
+export default DataEpisode;
