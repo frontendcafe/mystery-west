@@ -1,17 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useFetch } from "./useFetch";
 
 const DataShow = () => {
-  const [dataShow, setDataShow] = useState(null);
-  const [hasError, setHasError] = useState(false);
+  const url = "http://api.tvmaze.com/shows/530";
 
-  const getData = () =>
-    fetch("http://api.tvmaze.com/shows/530").then((res) => res.json());
-
-  useEffect(() => {
-    getData()
-      .then((dataShow) => setDataShow(dataShow))
-      .catch((err) => setHasError(true));
-  }, []);
+  const { data, hasError } = useFetch(url);
 
   return (
     <React.Fragment>
@@ -19,9 +12,9 @@ const DataShow = () => {
         <div>An error has occured.</div>
       ) : (
         <section className="episode">
-          <h2>{dataShow?.name}</h2>
-          <img src={dataShow?.image.medium} alt="ipsum"></img>
-          <p>{dataShow?.summary}</p>
+          <h2>{data?.name}</h2>
+          <img src={data?.image.medium} alt="Show post portrait"></img>
+          <p>{data?.summary}</p>
         </section>
       )}
     </React.Fragment>

@@ -1,29 +1,22 @@
-import React, { useState, useEffect } from "react";
-
-const URL = "http://api.tvmaze.com/shows/530";
+import React from "react";
+import { Link } from "react-router-dom";
+import { useFetch } from "./useFetch";
 
 const List = () => {
-  const [list, setList] = useState(null);
-  const [hasError, setHasError] = useState(false);
+  const URL = "http://api.tvmaze.com/shows/530/episodes";
 
-  const getData = () => fetch(`${URL}/episodes`).then((res) => res.json());
-
-  useEffect(() => {
-    getData()
-      .then((list) => setList(list))
-      .catch((err) => setHasError(true));
-  }, []);
+  const { data, hasError } = useFetch(URL);
 
   return (
     <React.Fragment>
       {hasError ? (
         <div>An error has occured.</div>
       ) : (
-        list?.map((item) => (
+        data?.map((item) => (
           <section key={item.id}>
-            <p>
+            <Link to={`/episodes/${item.id}`}>
               Season {item.season} - Episode {item.number} - {item.name}
-            </p>
+            </Link>
           </section>
         ))
       )}
