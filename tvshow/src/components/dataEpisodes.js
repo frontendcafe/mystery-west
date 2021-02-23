@@ -22,9 +22,9 @@ const DataEpisode = () => {
           </h5>
           <img src={data?.image.medium} alt="Episode portrait"></img>
           <div>
-            <p>{data?.summary}</p>
-            <p>Duration: {data?.runtime}</p>
-            <p>Date: {data?.airdate}</p>
+            <p dangerouslySetInnerHTML={{ __html: data?.summary }}></p>
+            <p>Duration: {data?.runtime} mins</p>
+            <p>Release Date: {data?.airdate}</p>
           </div>
         </section>
       )}

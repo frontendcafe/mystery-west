@@ -14,7 +14,7 @@ const DataShow = () => {
         <section className="episode">
           <h2>{data?.name}</h2>
           <img src={data?.image.medium} alt="Show post portrait"></img>
-          <p>{data?.summary}</p>
+          <p dangerouslySetInnerHTML={{ __html: data?.summary }}></p>
         </section>
       )}
     </React.Fragment>
