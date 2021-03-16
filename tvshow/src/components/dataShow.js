@@ -1,5 +1,7 @@
 import React from "react";
 import { useFetch } from "./useFetch";
+import ShortList from "./listShow";
+import imageShow from "../images/seinfeld.png";
 
 const DataShow = () => {
   const url = "http://api.tvmaze.com/shows/530";
@@ -13,8 +15,9 @@ const DataShow = () => {
       ) : (
         <section className="episode">
           <h2>{data?.name}</h2>
-          <img src={data?.image.medium} alt="Show post portrait"></img>
-          <p dangerouslySetInnerHTML={{ __html: data?.summary }}></p>
+          <img src={imageShow} alt="show poster" />
+          <div dangerouslySetInnerHTML={{ __html: data?.summary }}></div>
+          <ShortList />
         </section>
       )}
     </React.Fragment>

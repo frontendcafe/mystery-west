@@ -10,7 +10,8 @@ export const useFetch = (url) => {
     getData()
       .then((data) => setData(data))
       .catch((err) => setHasError(true));
-  }, [url]);
+    //eslint-disable-next-line
+  }, []);
 
   return { data, hasError };
 };
