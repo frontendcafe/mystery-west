@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import DataShow from "./components/dataShow";
 import DataEpisodes from "./components/dataEpisodes";
 import List from "./components/list";
+import Seasons from "./components/seasons";
+import Episodes from "./components/episodes";
 
 function App() {
   return (
@@ -24,6 +26,12 @@ function App() {
           <Route path="/episodes">
             <List />
           </Route>
+          <Route path="/seasons">
+            <Episodes />
+          </Route>
+          {/* <Route path="/seasons/:id">
+            <Episodes />
+          </Route> */}
           <Route exact path="/">
             <DataShow />
           </Route>
