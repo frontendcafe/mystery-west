@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useFetch } from "./useFetch";
+import "../styles/list.css";
 
 const List = () => {
   const URL = "http://api.tvmaze.com/shows/530/episodes";
@@ -32,26 +33,24 @@ const List = () => {
   }
 
   return (
-    <React.Fragment>
+    <div className="allSeasons">
       {hasError ? (
         <div>An error has occurred.</div>
       ) : (
         render?.map((season, index) => (
-          <section key={index}>
+          <section key={index} className="season">
             <h3>Season {index}</h3>
             {season?.map((episode) => (
-              <div key={episode.id}>
+              <li key={episode.id}>
                 <Link to={`/episodes/${episode.id}`}>
-                  <p>
-                    Ep{episode.episodeN} - {episode.name}
-                  </p>
+                  Ep{episode.episodeN} - {episode.name}
                 </Link>
-              </div>
+              </li>
             ))}
           </section>
         ))
       )}
-    </React.Fragment>
+    </div>
   );
 };
 
