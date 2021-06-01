@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles/global.css";
 import "./styles/App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import DataShow from "./components/dataShow";
@@ -9,14 +10,16 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/episodes">Episodes</Link>
-          </li>
-        </ul>
+        <nav className="navbar">
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/episodes">Episodes</Link>
+            </li>
+          </ul>
+        </nav>
         <Switch>
           <Route path="/episodes/:id">
             <DataEpisodes />

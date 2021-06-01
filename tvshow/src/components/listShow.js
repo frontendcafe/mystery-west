@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useFetch } from "./useFetch";
+import "../styles/datashow.css";
 
 const ShortList = () => {
   const URL = "http://api.tvmaze.com/shows/530/episodes";
@@ -10,23 +11,27 @@ const ShortList = () => {
   return (
     <React.Fragment>
       <h4>Episode List</h4>
-      <p>Season 1</p>
+      <div className="summaryList">
+        <p className="episodeNum">Season</p>
+        <p className="episodeNum">Episode</p>
+        <p className="episodeName title">Name</p>
+      </div>
       {hasError ? (
         <div>An error has occured.</div>
       ) : (
         data
           ?.filter((episodes) => episodes.season === 1)
           .map((item) => (
-            <section key={item.id}>
-              <Link to={`/episodes/${item.id}`}>
-                Episode {item.number} - {item.name}
+            <div key={item.id} className="summaryList">
+              <span className="episodeNum number">{item.season} </span>
+              <span className="episodeNum number">{item.number} </span>
+              <Link className="episodeName" to={`/episodes/${item.id}`}>
+                {item.name}
               </Link>
-            </section>
+            </div>
           ))
       )}
-      <p>
-        <Link to="/episodes">Full episode list</Link>
-      </p>
+      <Link to="/episodes">Full episode list</Link>
     </React.Fragment>
   );
 };

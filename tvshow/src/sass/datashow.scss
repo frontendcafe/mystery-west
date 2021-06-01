@@ -1,0 +1,40 @@
+h2 {
+  display: none;
+}
+
+.showDescription {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.showImage {
+  max-width: 13rem;
+}
+
+.description {
+  padding: 0 0.8rem;
+}
+
+.episodeName p {
+  display: flex;
+}
+
+// .showInfo {
+//   display: flex;
+//   flex-direction: column;
+// }
+
+@media (min-width: 48em) {
+  .showImage {
+    max-width: 30rem;
+    max-height: 40rem;
+    // margin-right: 2rem;
+  }
+
+  .showDescription {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
