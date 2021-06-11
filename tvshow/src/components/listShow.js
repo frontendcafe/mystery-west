@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useFetch } from "./useFetch";
-import "../styles/datashow.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useFetch } from './useFetch';
+import '../styles/datashow.css';
 
 const ShortList = () => {
-  const URL = "http://api.tvmaze.com/shows/530/episodes";
+  const URL = 'http://api.tvmaze.com/shows/530/episodes';
 
   const { data, hasError } = useFetch(URL);
 
@@ -20,7 +20,7 @@ const ShortList = () => {
         <div>An error has occured.</div>
       ) : (
         data
-          ?.filter((episodes) => episodes.season === 1)
+          ?.filter((episodes) => episodes.season === 1 && episodes.number <= 5)
           .map((item) => (
             <div key={item.id} className="summaryList">
               <span className="episodeNum number">{item.season} </span>

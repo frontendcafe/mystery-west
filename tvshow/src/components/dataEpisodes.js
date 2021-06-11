@@ -1,7 +1,7 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useFetch } from "./useFetch";
-import "./style/dataEpisode.css";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { useFetch } from './useFetch';
+import '../styles/dataEpisode.css';
 
 const DataEpisode = () => {
   const { id } = useParams();
@@ -15,17 +15,22 @@ const DataEpisode = () => {
       {hasError ? (
         <div>An error has occured.</div>
       ) : (
-        <section className="episode">
-          <h3>{data?.name}</h3>
-          <h5>
+        <section className={`episode season-${data?.season}`}>
+          <h4>
             Season {data?.season} - Episode {data?.number}
-          </h5>
-          <img src={data?.image.medium} alt="Episode portrait"></img>
-          <div>
-            <div dangerouslySetInnerHTML={{ __html: data?.summary }}></div>
-            <p>Duration: {data?.runtime} mins</p>
-            <p>Release Date: {data?.airdate}</p>
+          </h4>
+          <h3>{data?.name}</h3>
+          <div className="airdateInfo">
+            <img src={data?.image.medium} alt="Episode portrait"></img>
+            <div className="info">
+              <p>Duration: {data?.runtime} mins</p>
+              <p>Release Date: {data?.airdate}</p>
+            </div>
           </div>
+          <div
+            className="description"
+            dangerouslySetInnerHTML={{ __html: data?.summary }}
+          ></div>
         </section>
       )}
     </React.Fragment>

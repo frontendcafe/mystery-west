@@ -9,10 +9,10 @@ body {
   padding: 0 1rem;
 }
 
-ul li {
+.navList li {
   list-style: none;
 }
-ul li a {
+.navList li a {
   color: #e01d3b;
 }
 

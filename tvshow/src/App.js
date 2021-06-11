@@ -1,17 +1,17 @@
-import React from "react";
-import "./styles/global.css";
-import "./styles/App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import DataShow from "./components/dataShow";
-import DataEpisodes from "./components/dataEpisodes";
-import List from "./components/list";
+import React from 'react';
+import './styles/global.css';
+import './styles/App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import DataShow from './components/dataShow';
+import DataEpisodes from './components/dataEpisodes';
+import List from './components/list';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <nav className="navbar">
-          <ul>
+          <ul className="navList">
             <li>
               <Link to="/">Home</Link>
             </li>

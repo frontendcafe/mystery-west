@@ -1,0 +1,80 @@
+$season1: rgba(34, 129, 195, 0.2);
+$season2: rgba(104, 129, 183, 0.2);
+$season3: rgba(171, 176, 182, 0.2);
+$season4: rgba(160, 58, 132, 0.2);
+$season5: rgba(101, 101, 155, 0.2);
+$season6: rgba(53, 128, 157, 0.2);
+$season7: rgba(0, 191, 254, 0.2);
+$season8: rgba(214, 108, 154, 0.2);
+$season9: rgba(245, 46, 41, 0.2);
+
+.episode {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.airdateInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  width: 70%;
+}
+
+.season-1 {
+  background-color: $season1;
+}
+
+.season-2 {
+  background-color: $season2;
+}
+
+.season-3 {
+  background-color: $season3;
+}
+
+.season-4 {
+  background-color: $season4;
+}
+
+.season-5 {
+  background-color: $season5;
+}
+
+.season-6 {
+  background-color: $season6;
+}
+
+.season-7 {
+  background-color: $season7;
+}
+
+.season-8 {
+  background-color: $season8;
+}
+
+.season-9 {
+  background-color: $season9;
+}
+
+@media (min-width: 48em) {
+  .airdateInfo {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .description {
+    width: 60%;
+  }
+}

@@ -1,11 +1,11 @@
-import React from "react";
-import { useFetch } from "./useFetch";
-import ShortList from "./listShow";
-import imageShow from "../images/seinfeld.png";
-import "../styles/datashow.css";
+import React from 'react';
+import { useFetch } from './useFetch';
+import ShortList from './listShow';
+import imageShow from '../images/seinfeld.png';
+import '../styles/datashow.css';
 
 const DataShow = () => {
-  const url = "http://api.tvmaze.com/shows/530";
+  const url = 'http://api.tvmaze.com/shows/530';
 
   const { data, hasError } = useFetch(url);
 
