@@ -1,12 +1,12 @@
+$hover-color: #e01d3b;
+$dark: #000;
+
 @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
-body {
+
+* {
   font-family: 'Zilla Slab', serif;
   font-style: italic;
 }
-
-// .navbar {
-
-// }
 
 .navbar ul {
   font-size: 1.5rem;
@@ -15,23 +15,26 @@ body {
 
 .navList li {
   list-style: none;
+  text-decoration: underline;
+  text-decoration-color: $hover-color;
 
   & a {
-    color: #e01d3b;
+    color: $hover-color;
+
+    &:hover {
+      padding: 0 0 0 1rem;
+    }
   }
 }
 
 a {
-  color: #000;
+  color: $dark;
   text-decoration: none;
 }
 
-// a:visited:not(.navbar) {
-//   color: rgba(0, 0, 0, 0);
-// }
-
 @media (min-width: 48em) {
   .navbar {
+    width: 15rem;
     height: 100vh;
     display: flex;
     align-items: center;

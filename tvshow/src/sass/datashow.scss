@@ -13,8 +13,8 @@ h2 {
   max-width: 13rem;
 }
 
-.description {
-  padding: 0 0.8rem;
+.textDescription {
+  width: 70%;
 }
 
 .episodeName p {
@@ -36,5 +36,15 @@ h2 {
   .showDescription {
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  .textDescription {
+    width: 38rem;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 0.8rem;
   }
 }
