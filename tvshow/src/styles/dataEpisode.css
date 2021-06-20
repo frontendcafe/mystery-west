@@ -19,7 +19,7 @@
   flex-direction: column;
 }
 
-.description {
+.descriptionText {
   width: 70%;
 }
 
@@ -65,7 +65,7 @@
     flex-direction: row-reverse;
   }
 
-  .description {
+  .descriptionText {
     width: 60%;
   }
 }

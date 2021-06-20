@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFetch } from './useFetch';
-import ShortList from './listShow';
+import ShortList from './shortList';
 import imageShow from '../images/seinfeld.png';
 import '../styles/datashow.css';
 
@@ -18,7 +18,7 @@ const DataShow = () => {
           <h2>{data?.name}</h2>
           <section className="showDescription">
             <img src={imageShow} alt="show poster" className="showImage" />
-            <div>
+            <div className="textDescription">
               <div
                 className="description"
                 dangerouslySetInnerHTML={{ __html: data?.summary }}

@@ -28,7 +28,7 @@ const DataEpisode = () => {
             </div>
           </div>
           <div
-            className="description"
+            className="descriptionText"
             dangerouslySetInnerHTML={{ __html: data?.summary }}
           ></div>
         </section>
