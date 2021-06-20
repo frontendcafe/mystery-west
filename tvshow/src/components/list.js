@@ -1,15 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useFetch } from "./useFetch";
-import "../styles/list.css";
+import { React, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useFetch } from './useFetch';
+import '../styles/list.css';
 
 const List = () => {
-  const URL = "http://api.tvmaze.com/shows/530/episodes";
+  const URL = 'http://api.tvmaze.com/shows/530';
 
-  const { data, hasError } = useFetch(URL);
+  const { data, hasError } = useFetch(`${URL}/episodes`);
 
   let render = [];
-
   /**
    * [
    *  empty, season 0 does not exist
@@ -18,10 +17,9 @@ const List = () => {
    *  ...
    * ]
    */
-
   if (data) {
     data.forEach((episodeList) => {
-      if (typeof render[episodeList.season] === "undefined") {
+      if (typeof render[episodeList.season] === 'undefined') {
         render[episodeList.season] = [];
       }
       render[episodeList.season].push({
@@ -32,6 +30,14 @@ const List = () => {
     });
   }
 
+  const [isClickedIndex, setIsClickedIndex] = useState({});
+  const handleClick = (index) => () => {
+    setIsClickedIndex((state) => ({
+      ...state, // <-- copy previous state
+      [index]: !state[index], // <-- update value by index key
+    }));
+  };
+
   return (
     <div className="allSeasons">
       {hasError ? (
@@ -40,13 +46,35 @@ const List = () => {
         render?.map((season, index) => (
           <section key={index} className="season">
             <h3>Season {index}</h3>
-            {season?.map((episode) => (
-              <li key={episode.id}>
-                <Link to={`/episodes/${episode.id}`}>
-                  Ep{episode.episodeN} - {episode.name}
-                </Link>
-              </li>
-            ))}
+            <button
+              className={`button-${index}`}
+              onClick={handleClick(index)}
+              key={`${index}_action`}
+            >
+              {season?.length} Episodes
+            </button>
+            <ul
+              className={
+                isClickedIndex[index] ? `episodeList` : `episodeListHidden`
+              }
+            >
+              <div className="summaryList">
+                <li className="episodeNum">Episode</li>
+                <li className="episodeName title">Name</li>
+              </div>
+
+              {season?.map((episode) => (
+                <div
+                  key={`${episode.id}_number`}
+                  className="summaryList sumListMargin"
+                >
+                  <li className="episodeNum number">{episode.episodeN}</li>
+                  <Link className="episodeName" to={`/episodes/${episode.id}`}>
+                    {episode.name}
+                  </Link>
+                </div>
+              ))}
+            </ul>
           </section>
         ))
       )}
