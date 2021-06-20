@@ -7,6 +7,8 @@ $season6: rgba(53, 128, 157, 0.2);
 $season7: rgba(0, 191, 254, 0.2);
 $season8: rgba(214, 108, 154, 0.2);
 $season9: rgba(245, 46, 41, 0.2);
+$title-color: #e01d3b;
+$shadow: #aaaaaa;
 
 .episode {
   width: 100%;
@@ -14,6 +16,18 @@ $season9: rgba(245, 46, 41, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+.episodesNumber {
+  font-size: 1.5rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.episodesName {
+  color: $title-color;
+  font-size: 1.6rem;
+  margin: 0 0 2rem;
 }
 
 .airdateInfo {
@@ -24,12 +38,22 @@ $season9: rgba(245, 46, 41, 0.2);
   align-items: center;
 }
 
-.info {
-  display: flex;
-  flex-direction: column;
+.episodeImage {
+  border-radius: 0.3rem;
+  box-shadow: 3px 5px 5px -1px $shadow;
 }
 
-.descriptionText {
+.episodeInfo {
+  margin: 2rem 0;
+  box-sizing: border-box;
+
+  p {
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+  }
+}
+
+.episodeDescription {
   width: 70%;
 }
 
@@ -69,12 +93,15 @@ $season9: rgba(245, 46, 41, 0.2);
   background-color: $season9;
 }
 
-@media (min-width: 48em) {
-  .airdateInfo {
-    display: flex;
-    flex-direction: row-reverse;
-  }
-  .descriptionText {
+.summaryTitle {
+  margin: 0;
+}
+
+@media (min-width: 64em) {
+  .episodeDescription {
     width: 60%;
+  }
+  .episodeImage {
+    width: 22rem;
   }
 }

@@ -16,19 +16,25 @@ const DataEpisode = () => {
         <div>An error has occured.</div>
       ) : (
         <section className={`episode season-${data?.season}`}>
-          <h4>
+          <h4 className="episodesNumber">
             Season {data?.season} - Episode {data?.number}
           </h4>
-          <h3>{data?.name}</h3>
+          <h3 className="episodesName">{data?.name}</h3>
           <div className="airdateInfo">
-            <img src={data?.image.medium} alt="Episode portrait"></img>
-            <div className="info">
+            <img
+              className="episodeImage"
+              src={data?.image.medium}
+              alt="Episode portrait"
+            ></img>
+            <div className="episodeInfo">
               <p>Duration: {data?.runtime} mins</p>
               <p>Release Date: {data?.airdate}</p>
             </div>
           </div>
+
+          <h4 className="summaryTitle">Summary</h4>
           <div
-            className="descriptionText"
+            className="episodeDescription"
             dangerouslySetInnerHTML={{ __html: data?.summary }}
           ></div>
         </section>

@@ -4,6 +4,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+.episodesNumber {
+  font-size: 1.5rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.episodesName {
+  color: #e01d3b;
+  font-size: 1.6rem;
+  margin: 0 0 2rem;
 }
 
 .airdateInfo {
@@ -14,12 +26,21 @@
   align-items: center;
 }
 
-.info {
-  display: flex;
-  flex-direction: column;
+.episodeImage {
+  border-radius: 0.3rem;
+  box-shadow: 3px 5px 5px -1px #aaaaaa;
 }
 
-.descriptionText {
+.episodeInfo {
+  margin: 2rem 0;
+  box-sizing: border-box;
+}
+.episodeInfo p {
+  margin: 0.5rem 0;
+  padding: 0.5rem 0;
+}
+
+.episodeDescription {
   width: 70%;
 }
 
@@ -59,14 +80,17 @@
   background-color: rgba(245, 46, 41, 0.2);
 }
 
-@media (min-width: 48em) {
-  .airdateInfo {
-    display: flex;
-    flex-direction: row-reverse;
+.summaryTitle {
+  margin: 0;
+}
+
+@media (min-width: 64em) {
+  .episodeDescription {
+    width: 60%;
   }
 
-  .descriptionText {
-    width: 60%;
+  .episodeImage {
+    width: 22rem;
   }
 }
 
