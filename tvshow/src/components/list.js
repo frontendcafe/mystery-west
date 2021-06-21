@@ -59,7 +59,7 @@ const List = () => {
               }
             >
               <div className="summaryList">
-                <li className="episodeNum">Episode</li>
+                <li className="episodeNum title">Episode</li>
                 <li className="episodeName title">Name</li>
               </div>
 

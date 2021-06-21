@@ -12,9 +12,9 @@ li {
 }
 
 .episodeNum {
-  width: 4rem;
+  width: 3rem;
   margin: 0;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
 }
 .episodeNum.number {
   display: flex;
@@ -22,16 +22,23 @@ li {
 }
 
 .episodeName {
-  width: 18rem;
+  width: 17rem;
   margin: 0;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.5rem;
+  box-sizing: border-box;
 }
 .episodeName:hover:not(.title) {
   border-radius: 0.3rem;
   color: #e01d3b;
-  padding: 0.5rem;
-  background-color: #fffce0;
-  box-shadow: 5px 8px 7px -1px #aaaaaa;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: #e01d3b;
+  text-decoration-thickness: 0.2rem;
+}
+
+.title {
+  border-bottom: #919191 1px solid;
+  padding: 0.5rem 0.5rem 0.8rem;
 }
 
 .allSeasons {
@@ -43,7 +50,7 @@ li {
 }
 
 .season {
-  width: 20rem;
+  width: 22rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,7 +64,6 @@ li {
 .episodeList {
   margin: 0.5rem 0 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 .button-1 {

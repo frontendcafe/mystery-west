@@ -13,8 +13,8 @@ const ShortList = () => {
       <h4>Episode List</h4>
       <ul className="episodeList">
         <div className="summaryList">
-          <li className="episodeNum">Season</li>
-          <li className="episodeNum">Episode</li>
+          <li className="episodeNum title">Season</li>
+          <li className="episodeNum title">Episode</li>
           <li className="episodeName title">Name</li>
         </div>
         {hasError ? (
