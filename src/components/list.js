@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import '../styles/list.css';
 
 const List = () => {
-  const URL = 'http://api.tvmaze.com/shows/530';
+  const URL = 'https://api.tvmaze.com/shows/530';
 
   const {
     data: episodesData,

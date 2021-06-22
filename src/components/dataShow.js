@@ -6,7 +6,7 @@ import imageShow from '../images/seinfeld.png';
 import '../styles/datashow.css';
 
 const DataShow = () => {
-  const url = 'http://api.tvmaze.com/shows/530';
+  const url = 'https://api.tvmaze.com/shows/530';
 
   const { data: dataShow, isError: hasError } = useQuery(
     'show',
@@ -37,7 +37,7 @@ const DataShow = () => {
 };
 
 const ShortList = () => {
-  const URL = 'http://api.tvmaze.com/shows/530/episodes';
+  const URL = 'https://api.tvmaze.com/shows/530/episodes';
 
   const { data: episodeData, isError: hasError } = useQuery(
     'episodeList',

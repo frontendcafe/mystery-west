@@ -7,7 +7,7 @@ import '../styles/dataEpisode.css';
 const DataEpisode = () => {
   const { id } = useParams();
 
-  const URL = `http://api.tvmaze.com/episodes/${id}`;
+  const URL = `https://api.tvmaze.com/episodes/${id}`;
 
   const { data: dataEpisodes, isError: hasError } = useQuery(
     'show',
