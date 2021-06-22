@@ -44,7 +44,6 @@ const ShortList = () => {
     () => fetch(`${URL}`).then((res) => res.json()),
     { refetchOnWindowFocus: false }
   );
-
   return (
     <React.Fragment>
       <h4>Episode List</h4>
