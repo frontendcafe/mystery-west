@@ -68,14 +68,25 @@ li {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .season {
+  margin: 1.2rem 0;
   width: 22rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.seasonImage {
+  width: 11rem;
+  border-radius: 0.2rem;
+}
+
+.seasonNumber {
+  margin: 0.5rem;
 }
 
 .episodeListHidden {

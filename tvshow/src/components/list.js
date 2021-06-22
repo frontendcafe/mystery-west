@@ -1,31 +1,76 @@
 import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useFetch } from './useFetch';
+import { useQuery } from 'react-query';
 import '../styles/list.css';
 
 const List = () => {
   const URL = 'http://api.tvmaze.com/shows/530';
 
-  const { data, hasError } = useFetch(`${URL}/episodes`);
+  const {
+    data: episodesData,
+    isError: episodesDHasError,
+    isLoading: episodesDIsLoading,
+  } = useQuery(
+    'episodes',
+    () => fetch(`${URL}/episodes`).then((res) => res.json()),
+    { refetchOnWindowFocus: false }
+  );
+
+  const { data: seasonsData } = useQuery(
+    'seasons',
+    () => fetch(`${URL}/seasons`).then((res) => res.json()),
+    { refetchOnWindowFocus: false }
+  );
 
   let render = [];
-  /**
-   * [
-   *  empty, season 0 does not exist
-   *  [{},{},{},...], season 1
-   *  [{},{},{},...]  season 2
-   *  ...
-   * ]
+  /*
+   *  [                                              _
+   *    {  "key"  : "value" ,                         |
+   *       "key"  : "value" ,                         |
+   *       "key"  : "value",                          |
+   *       "list" : [       _                         |
+   *                  {},    |                        |
+   *                  {},    |-->  episodes season 1  |-->Info season 1,
+   *                  {},    |                        |
+   *                 ...    _|                        |
+   *               ]                                  |
+   *    },                                           _|
+   *    {  "key"  : "value" ,                         |
+   *       "key"  : "value" ,                         |
+   *       "key"  : "value",                          |
+   *       "list" : [       _                         |
+   *                  {},    |                        |
+   *                  {},    |-->  episodes season 2  |-->Info season 2,
+   *                  {},    |                        |
+   *                 ...    _|                        |
+   *               ]                                  |
+   *    },                                           _|
+   *      ...
+   *  ]
+   *
    */
-  if (data) {
-    data.forEach((episodeList) => {
-      if (typeof render[episodeList.season] === 'undefined') {
-        render[episodeList.season] = [];
-      }
-      render[episodeList.season].push({
-        id: episodeList.id,
-        name: episodeList.name,
-        episodeN: episodeList.number,
+
+  if (seasonsData && episodesData) {
+    seasonsData.forEach((season) => {
+      const epiList = [];
+
+      render.push({
+        seasonNumber: season.number,
+        episodes: season.episodeOrder,
+        url: season.image.medium,
+        seasonId: season.id,
+        episodeList: epiList,
+      });
+
+      episodesData.forEach((episode) => {
+        if (season.number === episode.season) {
+          epiList.push({
+            id: episode.id,
+            name: episode.name,
+            episodeN: episode.number,
+            seasonN: episode.season,
+          });
+        }
       });
     });
   }
@@ -40,18 +85,25 @@ const List = () => {
 
   return (
     <div className="allSeasons">
-      {hasError ? (
-        <div>An error has occurred.</div>
+      {episodesDIsLoading ? (
+        <span>Loading ...</span>
+      ) : episodesDHasError ? (
+        <span>Ooops!... An error has ocurred.</span>
       ) : (
         render?.map((season, index) => (
-          <section key={index} className="season">
-            <h3>Season {index}</h3>
+          <section key={season.seasonId} className="season">
+            <img
+              className="seasonImage"
+              src={season?.url}
+              alt="season portrait"
+            ></img>
+            <h3 className="seasonNumber">Season {season?.seasonNumber}</h3>
             <button
-              className={`button-${index}`}
+              className={`button-${season.seasonNumber}`}
               onClick={handleClick(index)}
-              key={`${index}_action`}
+              key={`${season.seasonId}_action`}
             >
-              {season?.length} Episodes
+              {season?.episodes} Episodes
             </button>
             <ul
               className={
@@ -62,15 +114,17 @@ const List = () => {
                 <li className="episodeNum title">Episode</li>
                 <li className="episodeName title">Name</li>
               </div>
-
-              {season?.map((episode) => (
+              {season?.episodeList?.map((episode) => (
                 <div
                   key={`${episode.id}_number`}
                   className="summaryList sumListMargin"
                 >
-                  <li className="episodeNum number">{episode.episodeN}</li>
-                  <Link className="episodeName" to={`/episodes/${episode.id}`}>
-                    {episode.name}
+                  <li className="episodeNum number">{episode?.episodeN}</li>
+                  <Link
+                    className="episodeName"
+                    to={`/id=${episode.id}/season_${episode.seasonN}/episode_${episode.episodeN}`}
+                  >
+                    {episode?.name}
                   </Link>
                 </div>
               ))}
