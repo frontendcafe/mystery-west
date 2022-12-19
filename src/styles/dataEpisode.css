@@ -1,0 +1,97 @@
+.episode {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.episodesNumber {
+  font-size: 1.5rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.episodesName {
+  color: #e01d3b;
+  font-size: 1.6rem;
+  margin: 0 0 2rem;
+}
+
+.airdateInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.episodeImage {
+  border-radius: 0.3rem;
+  box-shadow: 3px 5px 5px -1px #aaaaaa;
+}
+
+.episodeInfo {
+  margin: 1rem 0;
+  box-sizing: border-box;
+}
+.episodeInfo p {
+  margin: 0.3rem 0;
+  padding: 0.5rem 0;
+}
+
+.episodeDescription {
+  width: 70%;
+}
+
+.season-1 {
+  background-color: rgba(34, 129, 195, 0.2);
+}
+
+.season-2 {
+  background-color: rgba(104, 129, 183, 0.2);
+}
+
+.season-3 {
+  background-color: rgba(171, 176, 182, 0.2);
+}
+
+.season-4 {
+  background-color: rgba(160, 58, 132, 0.2);
+}
+
+.season-5 {
+  background-color: rgba(101, 101, 155, 0.2);
+}
+
+.season-6 {
+  background-color: rgba(53, 128, 157, 0.2);
+}
+
+.season-7 {
+  background-color: rgba(0, 191, 254, 0.2);
+}
+
+.season-8 {
+  background-color: rgba(214, 108, 154, 0.2);
+}
+
+.season-9 {
+  background-color: rgba(245, 46, 41, 0.2);
+}
+
+.summaryTitle {
+  margin: 0;
+}
+
+@media (min-width: 64em) {
+  .episodeDescription {
+    width: 60%;
+  }
+
+  .episodeImage {
+    width: 22rem;
+  }
+}
+
+/*# sourceMappingURL=dataEpisode.css.map */
