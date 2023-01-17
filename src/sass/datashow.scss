@@ -1,0 +1,41 @@
+.showDescription {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.showImage {
+  max-width: 13rem;
+}
+
+.textDescription {
+  width: 70%;
+}
+
+.episodeName p {
+  display: flex;
+}
+
+@media (min-width: 48em) {
+  .showImage {
+    max-width: 30rem;
+    max-height: 40rem;
+    margin-right: 2rem;
+  }
+
+  .showDescription {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  .textDescription {
+    width: 38rem;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 0.8rem;
+  }
+}
